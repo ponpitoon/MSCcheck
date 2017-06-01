@@ -4,4 +4,6 @@
     <dimen name="h1">25sp</dimen>
     <dimen name="h2">18sp</dimen>
     <dimen name="padding1">15dp</dimen>
+    <dimen name="padding2">5dp</dimen>
+    <dimen name="padding3">20dp</dimen>
 </resources>

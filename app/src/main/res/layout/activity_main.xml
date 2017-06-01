@@ -43,6 +43,7 @@
 
 
             <EditText
+                android:id="@+id/edtUser"
                 android:inputType="text"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
@@ -66,6 +67,7 @@
 
 
             <EditText
+                android:id="@+id/edtPassword"
                 android:inputType="textPassword"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
@@ -77,10 +79,11 @@
 
         <!--new Register-->
         <TextView
+            android:id="@+id/txtNewRegister"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
             android:textSize="@dimen/h2"
-            android:text="New Register"
+            android:text="@string/new_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -89,6 +92,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnLoing"
         android:textColor="@color/colorTextPrimary"
         android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
