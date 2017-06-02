@@ -1,7 +1,12 @@
 package raviwan.trongtum.ponpitoon.msccheck;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
             passwordString, addressString, phonString,
             eMailString, titleString, yearString,
             majorString, classString;
+    private Uri uri;
 
 
     @Override
@@ -37,11 +43,52 @@ public class RegisterActivity extends AppCompatActivity {
         //Back Controller
         backController();
 
+        //Human Controller
+        humanController();
+
         //Save Controller
         saveController();
 
 
     }   // Main Method
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            try {
+
+                uri = data.getData();
+
+                Bitmap bitmap = BitmapFactory.
+                        decodeStream(getContentResolver()
+                                .openInputStream(uri));
+                humanImageView.setImageBitmap(bitmap);
+
+
+
+            } catch (Exception e) {
+                Log.d("2Junev1", "e Result ==> " + e.toString());
+            }
+
+        } // if
+
+    }
+
+    private void humanController() {
+        humanImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "Please Choose App for Choose Image"), 1);
+
+            }
+        });
+    }
 
     private void createSpinner() {
         MyConstant myConstant = new MyConstant();
@@ -89,8 +136,31 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //Get Value From Edit Text
+                studentIDString = studentIDEditText.getText().toString().trim();
+                nameString = nameEditText.getText().toString().trim();
+                userString = userEditText.getText().toString().trim();
+                passwordString = passwordEditText.getText().toString().trim();
+                addressString = addressEditText.getText().toString().trim();
+                phonString = phoneEditText.getText().toString().trim();
+                eMailString = eMailEditText.getText().toString().trim();
+
+                //Check Space
+                if (checkSpace()) {
+                    //Have Space
+                    MyAlert myAlert = new MyAlert(RegisterActivity.this);
+                    myAlert.myDialog("Have Space", "Pleass Fill All Every Blank");
+                }
+
+
             }   // onClick
         });
+    }
+
+    private boolean checkSpace() {
+        return studentIDString.equals("") || nameString.equals("") ||
+                userString.equals("") || passwordString.equals("") ||
+                addressString.equals("") || phonString.equals("") || eMailString.equals("");
     }
 
     private void backController() {
