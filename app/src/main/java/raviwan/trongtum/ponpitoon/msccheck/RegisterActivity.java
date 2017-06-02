@@ -3,6 +3,7 @@ package raviwan.trongtum.ponpitoon.msccheck;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,10 @@ public class RegisterActivity extends AppCompatActivity {
             passwordEditText, addressEditText, phoneEditText, eMailEditText;
     private Spinner titleSpinner, yearSpinner, majorSpinner, classSpinner;
     private Button button;
+    private String studentIDString, nameString, userString,
+            passwordString, addressString, phonString,
+            eMailString, titleString, yearString,
+            majorString, classString;
 
 
     @Override
@@ -42,10 +47,22 @@ public class RegisterActivity extends AppCompatActivity {
         MyConstant myConstant = new MyConstant();
 
         //for Title
-        String[] titleStrings = myConstant.getTitleStrings();
+        final String[] titleStrings = myConstant.getTitleStrings();
         ArrayAdapter<String> titleStringArrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, titleStrings);
         titleSpinner.setAdapter(titleStringArrayAdapter);
+
+        titleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                titleString = titleStrings[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                titleString = titleStrings[0];
+            }
+        });
 
         // for Year
         String[] yearStrings = myConstant.getYearStrings();
