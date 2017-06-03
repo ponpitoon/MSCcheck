@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private Button button;
     private String userString, passwordString;
+    private String[] loginStrings;
 
 
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
             JSONArray jsonArray = new JSONArray(strJSON);
             String[] columnStrings = myConstant.getLoginStrings();
-            String[] loginStrings = new String[columnStrings.length];
+            loginStrings = new String[columnStrings.length];
 
             for (int i=0; i<jsonArray.length(); i++) {
 
@@ -99,8 +100,11 @@ public class MainActivity extends AppCompatActivity {
             if (b) {
                 myAlert.myDialog("User False", "No This User in my Database");
             } else if (passwordString.equals(loginStrings[7])) {
-                Toast.makeText(MainActivity.this, "Welcome" + loginStrings[4],
+                Toast.makeText(MainActivity.this, "Welcome " + loginStrings[4],
                         Toast.LENGTH_SHORT).show();
+
+                intentToService(Integer.parseInt(loginStrings[12]));
+
             } else {
                 myAlert.myDialog("Password False", "Please Try Again Password False");
             }
@@ -109,6 +113,32 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("3JuneV2", "e check ==>" + e.toString());
         }
+
+    }
+
+    private void intentToService(int key) {
+
+        Class<?> aClass = null;
+
+        switch (key) {
+            case 0:
+                aClass = StudentActivity.class;
+                break;
+            case 1:
+                aClass = TeacherActivity.class;
+                break;
+            case 2:
+                aClass = TeacherAdminActivity.class;
+                break;
+            case 3:
+                aClass = AdminActivity.class;
+                break;
+        }   // switch
+
+        Intent intent = new Intent(MainActivity.this, aClass);
+        intent.putExtra("Login", loginStrings);
+        startActivity(intent);
+        finish();
 
     }
 
