@@ -16,6 +16,7 @@ public class MyConstant {
     private String urlAddUserFarString = "http://swiftcodingthai.com/dom/addUserFar.php";
     private String urlImageString = "http://swiftcodingthai.com/dom/Image";
     private String urlGetUserString = "http://swiftcodingthai.com/dom/getUserDom.php";
+    private String urlGetTeacherString = "http://swiftcodingthai.com/dom/getTeacher.php";
 
     private String[] LoginStrings = new String[]{"id",
             "Image",
@@ -30,6 +31,11 @@ public class MyConstant {
             "Phone",
             "Email",
             "Status"};
+
+
+    public String getUrlGetTeacherString() {
+        return urlGetTeacherString;
+    }
 
     public String[] getLoginStrings() {
         return LoginStrings;
