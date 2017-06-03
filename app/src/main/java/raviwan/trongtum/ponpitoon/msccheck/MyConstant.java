@@ -7,14 +7,37 @@ package raviwan.trongtum.ponpitoon.msccheck;
 public class MyConstant {
 
     //For Spinner
-    private String[] titleStrings = new String[]{"Mr","Miss","Mrs"};
-    private String[] yearStrings = new String[]{"1","2","3","4"};
-    private String[] majorStrings = new String[]{"Major A","Major B","Major C","Major D"};
+    private String[] titleStrings = new String[]{"Mr", "Miss", "Mrs"};
+    private String[] yearStrings = new String[]{"1", "2", "3", "4"};
+    private String[] majorStrings = new String[]{"Major A", "Major B", "Major C", "Major D"};
     private String[] classStrings = new String[]{"Class A", "Class B", "Class C"};
 
     //For URL
     private String urlAddUserFarString = "http://swiftcodingthai.com/dom/addUserFar.php";
-    private String urlImageString = "http://swiftcodingthai.com/dom/image";
+    private String urlImageString = "http://swiftcodingthai.com/dom/Image";
+    private String urlGetUserString = "http://swiftcodingthai.com/dom/getUserDom.php";
+
+    private String[] LoginStrings = new String[]{"id",
+            "Image",
+            "StudentID",
+            "Title",
+            "Name",
+            "Year",
+            "User",
+            "Password",
+            "Major",
+            "Class",
+            "Phone",
+            "Email",
+            "Status"};
+
+    public String[] getLoginStrings() {
+        return LoginStrings;
+    }
+
+    public String getUrlGetUserString() {
+        return urlGetUserString;
+    }
 
     public String getUrlImageString() {
         return urlImageString;

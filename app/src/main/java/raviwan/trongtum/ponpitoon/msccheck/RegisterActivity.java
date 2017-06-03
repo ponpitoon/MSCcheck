@@ -315,6 +315,13 @@ public class RegisterActivity extends AppCompatActivity {
             String strResult = postNewUser.get();
             Log.d("3JunrV1", "Result ==> " + strResult);
 
+            if (Boolean.parseBoolean(strResult)) {
+                finish();
+            } else {
+                MyAlert myAlert = new MyAlert(RegisterActivity.this);
+                myAlert.myDialog("Error Upload value", "Please Try Again Cannot Upload To Sever");
+            }
+
         } catch (Exception e) {
             Log.d("2JuneV1", "e upload ==>" + e.toString());
         }
