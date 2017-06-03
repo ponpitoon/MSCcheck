@@ -296,6 +296,25 @@ public class RegisterActivity extends AppCompatActivity {
 
             Toast.makeText(RegisterActivity.this,"Upload Image OK", Toast.LENGTH_SHORT).show();
 
+            //Upload String Text to mySql
+            PostNewUser postNewUser = new PostNewUser(RegisterActivity.this);
+            MyConstant myConstant = new MyConstant();
+            postNewUser.execute(myConstant.getUrlImageString() + nameImageString,
+                    studentIDString,
+                    titleString,
+                    nameString,
+                    yearString,
+                    userString,
+                    passwordString,
+                    majorString,
+                    classString,
+                    phonString,
+                    eMailString,
+                    myConstant.getUrlAddUserFarString());
+
+            String strResult = postNewUser.get();
+            Log.d("3JunrV1", "Result ==> " + strResult);
+
         } catch (Exception e) {
             Log.d("2JuneV1", "e upload ==>" + e.toString());
         }

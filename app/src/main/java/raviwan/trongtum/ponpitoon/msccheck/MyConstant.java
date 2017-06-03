@@ -12,6 +12,17 @@ public class MyConstant {
     private String[] majorStrings = new String[]{"Major A","Major B","Major C","Major D"};
     private String[] classStrings = new String[]{"Class A", "Class B", "Class C"};
 
+    //For URL
+    private String urlAddUserFarString = "http://swiftcodingthai.com/dom/addUserFar.php";
+    private String urlImageString = "http://swiftcodingthai.com/dom/image";
+
+    public String getUrlImageString() {
+        return urlImageString;
+    }
+
+    public String getUrlAddUserFarString() {
+        return urlAddUserFarString;
+    }
 
     public String[] getTitleStrings() {
         return titleStrings;
