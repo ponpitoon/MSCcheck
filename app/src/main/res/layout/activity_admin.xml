@@ -41,6 +41,8 @@
                 android:textSize="@dimen/h2" />
 
             <LinearLayout
+                android:id="@+id/linTeacher"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding1"
